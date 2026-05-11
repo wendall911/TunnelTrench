@@ -55,7 +55,7 @@ public class ServerEventHandler {
             BlockPos vector = blockPos.subtract(player.blockPosition());
             Direction facing = Direction.getNearest(vector.getX(), vector.getY(), vector.getZ(), player.getDirection()).getOpposite();
 
-            for (BlockPos pos : BlockPosHelper.getAffectedPos(player)) {
+            for (BlockPos pos : BlockPosHelper.getAffectedPos(blockPos, facing)) {
                 BlockState otherBlockState = level.getBlockState(pos);
 
                 if (itemStack.isCorrectToolForDrops(otherBlockState)) {

@@ -2,14 +2,10 @@ package tunneltrench.common.item;
 
 import org.jspecify.annotations.NonNull;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.context.UseOnContext;
@@ -19,7 +15,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEvent.Context;
 
-import tunneltrench.TunnelTrench;
 import tunneltrench.util.BlockPosHelper;
 
 public class ExcavatorItemBase extends ShovelItem {
@@ -36,9 +31,9 @@ public class ExcavatorItemBase extends ShovelItem {
 
         if (result == InteractionResult.SUCCESS
                 && player != null
-                && !Minecraft.getInstance().hasShiftDown()
+                && !player.isCrouching()
                 && player.mayUseItemAt(context.getClickedPos(), context.getClickedFace(), context.getItemInHand())) {
-            for (BlockPos pos : BlockPosHelper.getAffectedPos(player)) {
+            for (BlockPos pos : BlockPosHelper.getAffectedPos(context.getClickedPos(), context.getClickedFace())) {
                 BlockState blockstate = FLATTENABLES.get(level.getBlockState(pos).getBlock());
 
                 if (blockstate != null && level.getBlockState(pos.above()).isAir()) {

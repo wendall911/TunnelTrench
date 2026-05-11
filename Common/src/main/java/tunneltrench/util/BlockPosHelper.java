@@ -6,6 +6,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
@@ -16,6 +17,45 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class BlockPosHelper {
+
+    private static final BlockPos[][] OFFSETS_BY_AXIS = new BlockPos[][]{
+        // X axis (EAST/WEST): affect Y/Z plane.
+        {
+            new BlockPos(0, 0, 0),
+            new BlockPos(0, 1, 0),
+            new BlockPos(0, -1, 0),
+            new BlockPos(0, 0, 1),
+            new BlockPos(0, 0, -1),
+            new BlockPos(0, 1, 1),
+            new BlockPos(0, 1, -1),
+            new BlockPos(0, -1, 1),
+            new BlockPos(0, -1, -1)
+        },
+        // Y axis (UP/DOWN): affect X/Z plane.
+        {
+            new BlockPos(0, 0, 0),
+            new BlockPos(1, 0, 0),
+            new BlockPos(-1, 0, 0),
+            new BlockPos(0, 0, 1),
+            new BlockPos(0, 0, -1),
+            new BlockPos(1, 0, 1),
+            new BlockPos(1, 0, -1),
+            new BlockPos(-1, 0, 1),
+            new BlockPos(-1, 0, -1)
+        },
+        // Z axis (NORTH/SOUTH): affect X/Y plane.
+        {
+            new BlockPos(0, 0, 0),
+            new BlockPos(1, 0, 0),
+            new BlockPos(-1, 0, 0),
+            new BlockPos(0, 1, 0),
+            new BlockPos(0, -1, 0),
+            new BlockPos(1, 1, 0),
+            new BlockPos(1, -1, 0),
+            new BlockPos(-1, 1, 0),
+            new BlockPos(-1, -1, 0)
+        }
+    };
 
     public static BlockHitResult rayTrace(Level level, Player player, ClipContext.Fluid mode) {
         float pitch = player.getXRot();
@@ -34,44 +74,16 @@ public class BlockPosHelper {
     }
 
     public static List<BlockPos> getAffectedPos(@NotNull Player player) {
-        List<BlockPos> list = new ArrayList<>();
         BlockHitResult rayTraceResult = rayTrace(player.level(), player, Fluid.NONE);
-        BlockPos center = rayTraceResult.getBlockPos();
+        return getAffectedPos(rayTraceResult.getBlockPos(), rayTraceResult.getDirection());
+    }
 
-        list.add(center);
-        switch (rayTraceResult.getDirection()) {
-            case DOWN:
-            case UP:
-                list.add(center.west());
-                list.add(center.east());
-                list.add(center.north());
-                list.add(center.south());
-                list.add(center.west().north());
-                list.add(center.west().south());
-                list.add(center.east().north());
-                list.add(center.east().south());
-                break;
-            case NORTH:
-            case SOUTH:
-                list.add(center.above());
-                list.add(center.below());
-                list.add(center.west());
-                list.add(center.east());
-                list.add(center.west().above());
-                list.add(center.west().below());
-                list.add(center.east().above());
-                list.add(center.east().below());
-                break;
-            case EAST:
-            case WEST:
-                list.add(center.above());
-                list.add(center.below());
-                list.add(center.north());
-                list.add(center.south());
-                list.add(center.north().above());
-                list.add(center.north().below());
-                list.add(center.south().above());
-                list.add(center.south().below());
+    public static List<BlockPos> getAffectedPos(@NotNull BlockPos center, @NotNull Direction direction) {
+        BlockPos[] offsets = OFFSETS_BY_AXIS[direction.getAxis().ordinal()];
+        List<BlockPos> list = new ArrayList<>(offsets.length);
+
+        for (BlockPos offset : offsets) {
+            list.add(center.offset(offset));
         }
 
         return list;
