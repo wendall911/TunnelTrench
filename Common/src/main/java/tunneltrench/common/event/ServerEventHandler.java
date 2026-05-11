@@ -7,10 +7,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 
 import tunneltrench.common.item.ExcavatorItemBase;
 import tunneltrench.common.item.HammerItemBase;
@@ -52,8 +54,8 @@ public class ServerEventHandler {
                 && !player.isCrouching()
                 && blockPos != null
                 && (item instanceof HammerItemBase || item instanceof ExcavatorItemBase)) {
-            BlockPos vector = blockPos.subtract(player.blockPosition());
-            Direction facing = Direction.getNearest(vector.getX(), vector.getY(), vector.getZ(), player.getDirection()).getOpposite();
+            BlockHitResult rayTraceResult = BlockPosHelper.rayTrace(level, player, ClipContext.Fluid.NONE);
+            Direction facing = rayTraceResult.getDirection();
 
             for (BlockPos pos : BlockPosHelper.getAffectedPos(blockPos, facing)) {
                 BlockState otherBlockState = level.getBlockState(pos);
