@@ -1,0 +1,22 @@
+{
+  "tunneltrench.configuration.debugenabled.description": "Show debug info.\nAnd do other stuff.",
+  "tunneltrench.configuration.debugenabled.name": "Enable Debug",
+  "tunneltrench.configuration.general.description": "General settings section description.",
+  "tunneltrench.configuration.general.name": "General Settings",
+  "tunneltrench.configuration.title": "Tunnel & Trench",
+  "item.tunneltrench.copper_excavator": "Copper Excavator",
+  "item.tunneltrench.copper_hammer": "Copper Mining Hammer",
+  "item.tunneltrench.diamond_excavator": "Diamond Excavator",
+  "item.tunneltrench.diamond_hammer": "Diamond Mining Hammer",
+  "item.tunneltrench.golden_excavator": "Gold Excavator",
+  "item.tunneltrench.golden_hammer": "Gold Mining Hammer",
+  "item.tunneltrench.iron_excavator": "Iron Excavator",
+  "item.tunneltrench.iron_hammer": "Iron Mining Hammer",
+  "item.tunneltrench.netherite_excavator": "Netherite Excavator",
+  "item.tunneltrench.netherite_hammer": "Netherite Mining Hammer",
+  "item.tunneltrench.stone_excavator": "Stone Excavator",
+  "item.tunneltrench.stone_hammer": "Stone Mining Hammer",
+  "item.tunneltrench.wooden_excavator": "Wooden Excavator",
+  "item.tunneltrench.wooden_hammer": "Wooden Mining Hammer",
+  "itemGroup.tunneltrench": "Tunnel & Trench"
+}

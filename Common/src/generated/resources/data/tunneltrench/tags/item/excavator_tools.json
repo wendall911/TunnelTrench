@@ -1,0 +1,11 @@
+{
+  "values": [
+    "tunneltrench:wooden_excavator",
+    "tunneltrench:stone_excavator",
+    "tunneltrench:copper_excavator",
+    "tunneltrench:iron_excavator",
+    "tunneltrench:golden_excavator",
+    "tunneltrench:diamond_excavator",
+    "tunneltrench:netherite_excavator"
+  ]
+}
