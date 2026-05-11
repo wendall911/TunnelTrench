@@ -32,6 +32,9 @@
       "${mod_id}.FabricConfigInitializer"
     ]
   },
+  "mixins": [
+    "${mod_id}.fabric.mixins.json"
+  ],
   "depends": {
     "fabricloader": "${fabric_loader_min_version}",
     "fabric-api": "${fabric_api_min_version}",
