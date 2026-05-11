@@ -12,7 +12,7 @@ Great for Vanilla+ and lightly modded packs that want faster gathering with reci
  - **Excavators** dig a 3x3 area (shovel)
  - Crouch to mine or dig a single block
  - Fully enchantable tools
-  - Available in vanilla materials:
+ - Available in vanilla materials:
    - Wood
    - Stone
    - Copper
