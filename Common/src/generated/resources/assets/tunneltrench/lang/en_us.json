@@ -1,9 +1,4 @@
 {
-  "tunneltrench.configuration.debugenabled.description": "Show debug info.\nAnd do other stuff.",
-  "tunneltrench.configuration.debugenabled.name": "Enable Debug",
-  "tunneltrench.configuration.general.description": "General settings section description.",
-  "tunneltrench.configuration.general.name": "General Settings",
-  "tunneltrench.configuration.title": "Tunnel & Trench",
   "item.tunneltrench.copper_excavator": "Copper Excavator",
   "item.tunneltrench.copper_hammer": "Copper Mining Hammer",
   "item.tunneltrench.diamond_excavator": "Diamond Excavator",
