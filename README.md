@@ -2,8 +2,8 @@
 ![Minecraft](http://cf.way2muchnoise.eu/versions/For%20MC_1540443_all.svg)
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg?longCache=true&style=flat)
 
-Tunnel & Trench adds Vanilla-style 3x3 tools that speed up everyday mining and digging without changing how progression feels.
-Use Hammers for mining, Excavators for digging, and crouch when you want normal single-block mining and digging.
+Tunnel & Trench adds Vanilla-style 3x3 tools that speed up everyday mining and digging without altering the progression feel.
+Use Hammers for mining, Excavators for digging, and crouch to do normal single-block mining and digging.
 Great for Vanilla+ and lightly modded packs that want faster gathering with recipes and progression that stays true to vanilla.
 
 ## Features
@@ -20,15 +20,6 @@ Great for Vanilla+ and lightly modded packs that want faster gathering with reci
    - Iron
    - Diamond
    - Netherite
-
-### Example Config
-```
-[general]
-```
-
-All Downloads:
-
-[![Files](https://curse.nikky.moe/api/img/1540443/files?logo)](https://minecraft.curseforge.com/projects/1540443/files)
 
 ## Links of Interest
 
