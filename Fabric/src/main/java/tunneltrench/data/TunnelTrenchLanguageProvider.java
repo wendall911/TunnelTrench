@@ -9,7 +9,6 @@ import net.minecraft.core.HolderLookup;
 
 import tunneltrench.TunnelTrench;
 import tunneltrench.common.item.TunnelTrenchItems;
-import tunneltrench.common.Translations;
 
 public class TunnelTrenchLanguageProvider extends FabricLanguageProvider {
 
@@ -34,35 +33,10 @@ public class TunnelTrenchLanguageProvider extends FabricLanguageProvider {
         addItem(builder, TunnelTrenchItems.goldExcavatorId, "Gold Excavator");
         addItem(builder, TunnelTrenchItems.diamondExcavatorId, "Diamond Excavator");
         addItem(builder, TunnelTrenchItems.netheriteExcavatorId, "Netherite Excavator");
-        addTranslationTitle(builder, "Tunnel & Trench");
-        addTranslation(builder, "general");
-        addTranslationName(builder, "debugenabled", "Enable Debug");
-        addTranslationDescription(builder, "debugenabled");
     }
 
     private void addItem(TranslationBuilder builder, String id, String name) {
         builder.add("item." + TunnelTrench.MODID + "." + id, name);
-    }
-
-    private void addTranslationTitle(TranslationBuilder builder, String title) {
-        builder.add(TunnelTrench.MODID + ".configuration.title", title);
-    }
-
-    private void addTranslationName(TranslationBuilder builder, String id, String name) {
-        builder.add(TunnelTrench.MODID + ".configuration." + id + ".name", name);
-    }
-
-    private void addTranslationDescription(TranslationBuilder builder, String id) {
-        builder.add(TunnelTrench.MODID + ".configuration." + id + ".description", Translations.get(id));
-    }
-
-    private void addTranslation(TranslationBuilder buildder, String id) {
-        addTranslationName(buildder, id, Translations.get(id + ".title"));
-        addTranslationDescription(buildder, id);
-    }
-
-    private void addTranslationDescription(TranslationBuilder builder, String id, String key) {
-        builder.add(TunnelTrench.MODID + ".configuration." + id + ".description", Translations.get(key));
     }
 
 }

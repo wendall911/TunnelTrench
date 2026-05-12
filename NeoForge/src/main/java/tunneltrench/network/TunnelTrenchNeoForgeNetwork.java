@@ -2,6 +2,7 @@ package tunneltrench.network;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import tunneltrench.util.BlockEffectHelper;

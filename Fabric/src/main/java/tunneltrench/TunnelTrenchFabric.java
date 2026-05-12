@@ -3,8 +3,8 @@ package tunneltrench;
 import java.util.function.BiConsumer;
 
 import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -19,8 +19,6 @@ public class TunnelTrenchFabric implements ModInitializer {
         registryInit();
 
         PayloadTypeRegistry.clientboundPlay().register(BreakBlockPreview.TYPE, BreakBlockPreview.STREAM_CODEC);
-
-        TunnelTrench.init();
     }
 
     private void registryInit() {

@@ -13,19 +13,16 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 import tunneltrench.common.item.TunnelTrenchItems;
-import tunneltrench.config.ConfigHandler;
 import tunneltrench.event.ServerEventListener;
 import tunneltrench.network.TunnelTrenchNeoForgeNetwork;
 import tunneltrench.network.BreakBlockPreview;
@@ -35,12 +32,10 @@ import tunneltrench.network.BreakBlockPreview;
 public class TunnelTrenchNeoForge {
 
     public TunnelTrenchNeoForge(IEventBus eventBus) {
-        TunnelTrench.initConfig();
         registryInit(eventBus);
         eventBus.addListener(this::setup);
         eventBus.addListener(this::buildCreativeTabContents);
         eventBus.addListener(this::registerPayloadHandler);
-        TunnelTrench.init();
     }
 
     private void buildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
