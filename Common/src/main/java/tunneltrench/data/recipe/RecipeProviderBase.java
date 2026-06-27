@@ -5,10 +5,11 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.criterion.InventoryChangeTrigger;
-import net.minecraft.advancements.criterion.ItemPredicate;
+import net.minecraft.advancements.predicates.ItemPredicate;
+import net.minecraft.advancements.triggers.CriteriaTriggers;
+import net.minecraft.advancements.triggers.Criterion;
+import net.minecraft.advancements.triggers.InventoryChangeTrigger;
+import net.minecraft.advancements.triggers.InventoryChangeTrigger.TriggerInstance;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -37,7 +38,7 @@ public class RecipeProviderBase {
         return inventoryTrigger(ItemPredicate.Builder.item().of(itemRegistry, pTag).build());
     }
 
-    private static Criterion<InventoryChangeTrigger.TriggerInstance> has(HolderLookup.RegistryLookup<Item> itemRegistry, ItemLike pItemLike) {
+    private static Criterion<TriggerInstance> has(HolderLookup.RegistryLookup<Item> itemRegistry, ItemLike pItemLike) {
         return inventoryTrigger(ItemPredicate.Builder.item().of(itemRegistry, pItemLike).build());
     }
 
@@ -83,7 +84,7 @@ public class RecipeProviderBase {
 
     protected static ShapedRecipeBuilder copperHammer(HolderLookup.RegistryLookup<Item> itemRegistry) {
         return ShapedRecipeBuilder.shaped(itemRegistry, RecipeCategory.TOOLS, TunnelTrenchItems.copperHammerItem)
-            .define('B', Items.COPPER_BLOCK)
+            .define('B', Items.COPPER_BLOCK.weathering().unaffected())
             .define('I', ItemTags.LOGS)
             .pattern("BBB")
             .pattern(" I ")
@@ -153,7 +154,7 @@ public class RecipeProviderBase {
 
     protected static ShapedRecipeBuilder copperExcavator(HolderLookup.RegistryLookup<Item> itemRegistry) {
         return ShapedRecipeBuilder.shaped(itemRegistry, RecipeCategory.TOOLS, TunnelTrenchItems.copperExcavatorItem)
-            .define('B', Items.COPPER_BLOCK)
+            .define('B', Items.COPPER_BLOCK.weathering().unaffected())
             .define('I', ItemTags.LOGS)
             .pattern(" B ")
             .pattern(" I ")
