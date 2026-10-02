@@ -7,7 +7,7 @@ import net.minecraft.core.Direction;
 public class BlockEffectHelper {
 
     public static void addBreakingBlockEffect(ClientLevel level, BlockPos pos, int side) {
-        level.addBreakingBlockEffect(pos, Direction.from3DDataValue(side));
+        level.addBreakingBlockEffects(pos, Direction.from3DDataValue(side), true);
     }
 
 }

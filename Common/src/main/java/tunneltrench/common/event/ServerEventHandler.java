@@ -3,6 +3,7 @@ package tunneltrench.common.event;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -21,20 +22,19 @@ import tunneltrench.util.BlockPosHelper;
 
 public class ServerEventHandler {
 
-    public static void blockBreak(LevelAccessor levelAccessor, Player player, BlockState blockState, BlockPos blockPos) {
+    public static void blockBreak(LevelAccessor levelAccessor, ServerPlayer player, BlockState blockState, BlockPos blockPos) {
         if (blockState.canOcclude() && !player.isCrouching()) {
             ItemStack itemStack = player.getMainHandItem();
             Item item = itemStack.getItem();
 
             if (item instanceof HammerItemBase || item instanceof ExcavatorItemBase) {
                 double hardness = blockState.getDestroySpeed(levelAccessor, blockPos);
+                ServerLevel level = (ServerLevel) levelAccessor;
 
                 for (BlockPos pos : BlockPosHelper.getAffectedPos(player)) {
                     BlockState otherBlockState = levelAccessor.getBlockState(pos);
 
                     if (hardness * 2 >= blockState.getDestroySpeed(levelAccessor, pos) && itemStack.isCorrectToolForDrops(otherBlockState)) {
-                        Level level = player.level();
-
                         otherBlockState.getBlock().playerDestroy(level, player, pos, otherBlockState, levelAccessor.getBlockEntity(pos), itemStack);
                         level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
 

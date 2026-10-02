@@ -1,5 +1,6 @@
 package tunneltrench.event;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
@@ -10,7 +11,7 @@ public class ServerEventListener {
 
     @SubscribeEvent
     public static void blockBreak(BreakBlockEvent event) {
-        ServerEventHandler.blockBreak(event.getLevel(), event.getPlayer(), event.getState(), event.getPos());
+        ServerEventHandler.blockBreak(event.getLevel(), (ServerPlayer) event.getPlayer(), event.getState(), event.getPos());
     }
 
     @SubscribeEvent

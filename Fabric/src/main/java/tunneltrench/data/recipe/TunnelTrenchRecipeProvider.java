@@ -4,12 +4,15 @@ import java.util.concurrent.CompletableFuture;
 
 import org.jspecify.annotations.NonNull;
 
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.recipes.RecipeProvider;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.world.item.crafting.Recipe;
 
 import tunneltrench.TunnelTrench;
 
@@ -25,8 +28,9 @@ public class TunnelTrenchRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    protected @NonNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider registries, @NonNull RecipeOutput recipeOutput) {
-        return new CommonRecipeProvider(registries, recipeOutput);
+    protected @NonNull RecipeProvider createRecipeProvider(@NonNull Provider registries,
+            @NonNull BootstrapContext<Recipe<?>> recipes, @NonNull BootstrapContext<Advancement> advancements) {
+        return new CommonRecipeProvider(registries, recipes, advancements);
     }
 
 }
