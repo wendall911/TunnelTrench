@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tunneltrench:copper_hammer"
+        "recipes": "tunneltrench:copper_hammer"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

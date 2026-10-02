@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tunneltrench:wooden_excavator"
+        "recipes": "tunneltrench:wooden_excavator"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

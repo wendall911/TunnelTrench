@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tunneltrench:golden_excavator"
+        "recipes": "tunneltrench:golden_excavator"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

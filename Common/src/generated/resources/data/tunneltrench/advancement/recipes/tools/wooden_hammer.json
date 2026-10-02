@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tunneltrench:wooden_hammer"
+        "recipes": "tunneltrench:wooden_hammer"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

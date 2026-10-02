@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tunneltrench:diamond_excavator"
+        "recipes": "tunneltrench:diamond_excavator"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

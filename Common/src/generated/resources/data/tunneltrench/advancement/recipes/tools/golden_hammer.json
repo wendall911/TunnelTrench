@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tunneltrench:golden_hammer"
+        "recipes": "tunneltrench:golden_hammer"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
