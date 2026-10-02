@@ -11,7 +11,9 @@ public class ServerEventListener {
 
     @SubscribeEvent
     public static void blockBreak(BreakBlockEvent event) {
-        ServerEventHandler.blockBreak(event.getLevel(), (ServerPlayer) event.getPlayer(), event.getState(), event.getPos());
+        if (!event.getLevel().isClientSide()) {
+            ServerEventHandler.blockBreak(event.getLevel(), (ServerPlayer) event.getPlayer(), event.getState(), event.getPos());
+        }
     }
 
     @SubscribeEvent
